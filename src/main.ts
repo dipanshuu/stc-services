@@ -30,6 +30,9 @@ async function bootstrap() {
 
   const config = app.get(ConfigService);
   await app.listen(config.get('app.port'));
+  console.log(
+    `Application successfully started on port: ${config.get('app.port')}`,
+  );
 }
 
 bootstrap();
