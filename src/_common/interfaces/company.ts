@@ -1,6 +1,6 @@
 import { ObjectionModel } from '@libs/core';
 
-export interface User$Model extends ObjectionModel {
+export interface Company$Model extends ObjectionModel {
   id?: number;
   uuid?: string;
   firstName?: string;
