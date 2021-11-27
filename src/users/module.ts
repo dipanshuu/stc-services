@@ -1,15 +1,14 @@
 import { HttpModule, Module } from '@nestjs/common';
 import { USER } from './constants';
-import { AdminUsersController, UsersController } from './controllers';
+import { UsersController } from './controllers';
 import { UserRepository } from './repositories/database';
-import { AdminUsersService, UsersService } from './services';
+import { UsersService } from './services';
 
 @Module({
   imports: [HttpModule],
-  controllers: [UsersController, AdminUsersController],
+  controllers: [UsersController],
   providers: [
     UsersService,
-    AdminUsersService,
     { provide: USER.REPOSITORY, useClass: UserRepository },
   ],
 })

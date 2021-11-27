@@ -3,9 +3,10 @@ import { UserRepository } from '@app/users/repositories/database';
 import { HttpModule, Module } from '@nestjs/common';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
-import { AdminAuthController, AuthController } from './controllers';
-import { AdminAuthService, AuthService } from './services';
+import { AuthController } from './controllers';
+import { AuthService } from './services';
 import { KietStrategy } from './stratagies/kiet';
+import { LocalStrategy } from './stratagies/local';
 
 @Module({
   imports: [
@@ -16,11 +17,11 @@ import { KietStrategy } from './stratagies/kiet';
       signOptions: { expiresIn: '24h' },
     }),
   ],
-  controllers: [AuthController, AdminAuthController],
+  controllers: [AuthController],
   providers: [
     AuthService,
-    AdminAuthService,
     KietStrategy,
+    LocalStrategy,
     { provide: USER.REPOSITORY, useClass: UserRepository },
   ],
 })

@@ -1,29 +1,17 @@
 import { HttpModule, Module } from '@nestjs/common';
 import { CLASS, COMPANY } from './constants';
-import {
-  AdminClassController,
-  AdminCompaniesController,
-  ClassController,
-  CompaniesController,
-} from './controllers';
+import { ClassController, CompaniesController } from './controllers';
 import { ClassRepository } from './repositories.ts/classes/database';
 import { CompanyRepository } from './repositories.ts/companies/database';
-import { AdminClassService, ClassService } from './services/classes';
-import { AdminCompanyService, CompanyService } from './services/companies';
+import { ClassService } from './services/classes';
+import { CompanyService } from './services/companies';
 
 @Module({
   imports: [HttpModule],
-  controllers: [
-    CompaniesController,
-    AdminCompaniesController,
-    ClassController,
-    AdminClassController,
-  ],
+  controllers: [CompaniesController, ClassController],
   providers: [
     CompanyService,
-    AdminCompanyService,
     ClassService,
-    AdminClassService,
     { provide: COMPANY.REPOSITORY, useClass: CompanyRepository },
     { provide: CLASS.REPOSITORY, useClass: ClassRepository },
   ],

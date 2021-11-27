@@ -8,6 +8,7 @@ import { RequestGuard, ExceptionFilter, TimeoutInterceptor } from '@libs/core';
 import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
+  console.time('SERVER_START_TIME');
   const app = await NestFactory.create(AppModule);
 
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
@@ -30,6 +31,7 @@ async function bootstrap() {
 
   const config = app.get(ConfigService);
   await app.listen(config.get('app.port'));
+  console.timeEnd('SERVER_START_TIME');
   console.log(
     `Application successfully started on port: ${config.get('app.port')}`,
   );
