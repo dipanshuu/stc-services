@@ -11,4 +11,11 @@ export class ReportRepository
 {
   @InjectModel(ReportModel)
   model: ReportModel;
+
+  async search(params: Record<string, any>): Promise<Record<string, any>> {
+    const query = this.query();
+    query.where('companydatadivided.companyID', '=', params.companyId);
+    query.withGraphFetched({ company: true, user: true });
+    return query;
+  }
 }

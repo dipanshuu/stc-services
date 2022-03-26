@@ -26,5 +26,10 @@ module.exports = {
   seeds: {
     directory: './src/_db/seeds',
   },
-  ...knexSnakeCaseMappers(),
+  log: {
+    warn() {},
+    error() {},
+    deprecate() {},
+    debug() {},
+  },
 } as Knex.Config;

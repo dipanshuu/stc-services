@@ -11,4 +11,11 @@ export class CompanyRepository
 {
   @InjectModel(CompanyModel)
   model: CompanyModel;
+
+  async search(params: Record<string, any>): Promise<Record<string, any>> {
+    const query = this.query();
+    query.where('companyClass', '=', params.classId);
+    query.withGraphFetched({ user: true, class: true });
+    return query;
+  }
 }
