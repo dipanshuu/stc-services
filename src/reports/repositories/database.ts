@@ -18,4 +18,9 @@ export class ReportRepository
     query.withGraphFetched({ company: true, user: true });
     return query;
   }
+  async count(): Promise<any> {
+    const query = this.query();
+    query.count();
+    return query;
+  }
 }

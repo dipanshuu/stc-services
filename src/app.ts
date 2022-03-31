@@ -7,6 +7,7 @@ import { UsersModule } from './users';
 import { AuthModule } from './auth';
 import { CompaniesModule } from './companies/module';
 import { ReportsModule } from './reports';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ReportsModule } from './reports';
     UsersModule,
     CompaniesModule,
     ReportsModule,
+    DashboardModule,
   ],
   providers: [],
 })
